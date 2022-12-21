@@ -27,6 +27,8 @@ function atualizarJogo(){
     mostrarLestrasErradas();
     mostrasLestrasCorretas();
     desenharForca();
+    checarJogo();
+
 }
 
 function mostrarLestrasErradas(){
@@ -50,6 +52,24 @@ function mostrasLestrasCertas() {
     })
 }
 
+function checarJogo() {
+    let mensagem = "";
+    const container = document.querySelector(".palavra-secreta-container");
+    const partesCorpo = document.querySelectorAll(".forca-parte");
+
+    if(letrasErradas.length == partesCorpo.length) {
+        mensagem = "fim de jogo voce perdeu";
+    }
+
+    if(palavraSecreta == container.innerText) {
+        mensagem = "Parabens voce ganhou!";
+    }
+    if(mensagem) {
+        document.querySelector("#mensagem").innerHTML = mensagem;
+        document.querySelector(".popup-container").style.display = "flex";
+    }
+}
+
 function desenharForca() {
     const partesCorpo = document.querySelectorAll(".forca-parte");
     for (let i = 0; i < letrasErradas.length; i++) {
@@ -68,4 +88,8 @@ function mostrarAvisoLetraRepetida(){
 function isLetra(codigo){
     return codigo >= 65 && codigo <= 90;
 
+}
+
+function reiniciarJogo(){
+    window.location.reload();
 }
