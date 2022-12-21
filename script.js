@@ -4,7 +4,7 @@ const palavraSecreta = frutas [Math.floor(Math.random() * frutas.length)];
 
 const letrasErradas = [];
 
-const LestrasCorretas = [];
+const letrasCorretas = [];
 
 document.addEventListener("keydown", (evento ) => {
     const codigo = evento.keycode;
@@ -14,7 +14,7 @@ document.addEventListener("keydown", (evento ) => {
             mostrarAvisoLetraRepetida();
         }else{
             if(palavraSecreta.includes(letra)){
-                LestrasCorretas.push(letra);
+                letrasCorretas.push(letra);
             }else{
                 letrasErradas.push(letra);
             }
@@ -24,14 +24,14 @@ document.addEventListener("keydown", (evento ) => {
 });
 
 function atualizarJogo(){
-    mostrarLestrasErradas();
-    mostrasLestrasCorretas();
+    mostrarLetrasErradas();
+    mostrasLetrasCertas();
     desenharForca();
     checarJogo();
 
 }
 
-function mostrarLestrasErradas(){
+function mostrarLetrasErradas(){
     const div = document.querySelector(".letras-erradas-container");
     div.innerHTML = "<h3>Letras erradas</h3>";
     letrasErradas.forEach(letra => {
@@ -39,11 +39,11 @@ function mostrarLestrasErradas(){
     });
 }
 
-function mostrasLestrasCertas() {
+function mostrasLetrasCertas() {
     const container = document.querySelector(".palavra-secreta-container");
     container.innerHTML = "";
     palavraSecreta.split("").forEach(letra => {
-        if(lettraCorretas.includes(letra)){
+        if(letrasCorretas.includes(letra)){
             container.innerHTML += `<span>${letra}</span>`;
         }else{
             container.innerHTML += `<span>_</span>`
