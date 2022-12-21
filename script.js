@@ -1,10 +1,10 @@
 const frutas = ["pitaia", "manga", "pinha", "tomate", "framboesa"];
 
-const palavraSecreta = frutas [Math.floor(Math.random() * frutas.length)]
+const palavraSecreta = frutas [Math.floor(Math.random() * frutas.length)];
 
 const letrasErradas = [];
 
-const mostrasLestrasCorretas = [];
+const LestrasCorretas = [];
 
 document.addEventListener("keydown", (evento ) => {
     const codigo = evento.keycode;
@@ -14,14 +14,14 @@ document.addEventListener("keydown", (evento ) => {
             mostrarAvisoLetraRepetida();
         }else{
             if(palavraSecreta.includes(letra)){
-                mostrasLestrasCorretas.push(letra);
+                LestrasCorretas.push(letra);
             }else{
                 letrasErradas.push(letra);
             }
         }
         atualizarJogo();
     }
-})
+});
 
 function atualizarJogo(){
     mostrarLestrasErradas();
